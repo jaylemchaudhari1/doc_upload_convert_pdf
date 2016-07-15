@@ -1,0 +1,32 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+@model IEnumerable<string>
+
+<div class="jumbotron">
+    <h2>Doc to PDF Converter</h2>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h3>Select Word document file for upload and convert to pdf</h3>
+        <p>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { enctype = "multipart/form-data" }))
+            {
+                <input type="file" name="file" /><input type="submit" value="Upload" />
+            }
+
+        </p>
+        <h3>List of uploded pdf files from "../App_Data/uploads"</h3>
+        <p>
+            
+            <ul>
+                @foreach (var name in Model)
+                {
+                    <li>@name</li>
+                }
+            </ul>
+        </p>
+    </div>
+
+</div>
